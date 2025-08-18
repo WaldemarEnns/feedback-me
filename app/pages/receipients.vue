@@ -22,11 +22,28 @@ const receipients = ref([
     },
     
 ])
+
+const openReceipientModal = ref(false)
+
+const handleRecipientAdded = (newRecipient: any) => {
+    receipients.value.push(newRecipient)
+}
 </script>
 
 <template>
     <div>
-        <h1 class="text-2xl font-bold">Receipients</h1>
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">Recipients</h1>
+            <UButton 
+                label="Add New Recipient" 
+                color="primary" 
+                variant="solid"
+                icon="i-heroicons-plus"
+                size="lg"
+                @click="openReceipientModal = true"
+            />
+        </div>
+        
         <UTable
             :data="receipients"
         >
@@ -37,5 +54,11 @@ const receipients = ref([
                 <UBadge>{{ row.original.feedbackCount }}</UBadge>
             </template>
         </UTable>
+        
+        <AddReceipientModal 
+            v-model="openReceipientModal"
+            @recipient-added="handleRecipientAdded"
+            @close="openReceipientModal = false"
+        />
     </div>
 </template>
