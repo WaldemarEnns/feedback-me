@@ -5,6 +5,11 @@ const items = [
         to: '/',
         icon: 'i-heroicons-home',
     },
+    {
+        label: 'Receipients',
+        to: '/receipients',
+        icon: 'i-heroicons-user-group',
+    },
     
 ]
 </script>
