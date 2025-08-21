@@ -10,6 +10,11 @@ const items = [
         to: '/receipients',
         icon: 'i-heroicons-user-group',
     },
+    {
+        label: 'Feedback',
+        to: '/feedback',
+        icon: 'i-heroicons-chat-bubble-bottom-center-text',
+    }
     
 ]
 </script>
