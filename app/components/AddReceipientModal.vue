@@ -40,13 +40,14 @@ const handleSubmit = () => {
             <div class="p-6">
                 <h2 class="text-xl font-semibold mb-4">Add New Recipient</h2>
                 
-                <form @submit.prevent="handleSubmit" class="space-y-4 w-full">
-                    <div class="w-full">
+                <form @submit.prevent="handleSubmit" class="space-y-4">
+                    <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
                             Name
                         </label>
                         <UInput
                             id="name"
+                            class="w-full"
                             v-model="form.name"
                             placeholder="Enter recipient name"
                             required
@@ -59,6 +60,7 @@ const handleSubmit = () => {
                         </label>
                         <UInput
                             id="email"
+                            class="w-full"
                             v-model="form.email"
                             type="email"
                             placeholder="Enter recipient email"
@@ -72,6 +74,7 @@ const handleSubmit = () => {
                         </label>
                         <UTextarea
                             id="description"
+                            class="w-full"
                             v-model="form.description"
                             placeholder="Enter recipient description"
                             rows="3"
