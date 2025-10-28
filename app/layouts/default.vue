@@ -1,12 +1,12 @@
 <template>
-    <div class="min-h-screen grid grid-cols-[12rem_1fr]">
-        <!-- Left Sidebar - Navigation -->
-        <aside class="px-1">
+    <div class="min-h-screen">
+        <!-- Left Sidebar - Navigation (Fixed) -->
+        <aside class="fixed left-0 top-0 h-screen w-48 px-1 z-10">
             <TheNavigation />
         </aside>
         
         <!-- Right Side - Page Content -->
-        <main class="p-6">
+        <main class="ml-48 p-6">
             <slot />
         </main>
     </div>
