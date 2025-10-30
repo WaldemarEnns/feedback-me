@@ -110,3 +110,6 @@ export const getAllEmotions = (): EmotionConfig[] => {
 export const getAllSentiments = (): SentimentConfig[] => {
   return Object.values(SENTIMENTS)
 }
+
+export type Emotion = keyof typeof EMOTIONS
+export type Sentiment = keyof typeof SENTIMENTS
