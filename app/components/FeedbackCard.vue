@@ -20,6 +20,12 @@ const props = defineProps<Props>()
 
 const emotionConfig = computed(() => getEmotionConfig(props.feedback.emotion))
 const sentimentConfig = computed(() => getSentimentConfig(props.feedback.sentiment))
+
+const firstInitial = computed(() => {
+  const name = props.feedback.recipientName || ''
+  const firstName = name.trim().split(/\s+/)[0] || ''
+  return firstName.charAt(0).toUpperCase()
+})
 </script>
 
 <template>
@@ -31,6 +37,7 @@ const sentimentConfig = computed(() => getSentimentConfig(props.feedback.sentime
             :alt="feedback.recipientName"
             size="md"
             :src="feedback.avatar"
+            :text="firstInitial"
             icon="i-heroicons-user"
           />
           <div>
