@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import type { Emotion, Sentiment } from '~/utils/emotions'
+
 interface Feedback {
   id: number
   recipientName: string
   date: string
-  emotion: string
+  emotion: Emotion
   feedback: string
-  sentiment: 'positive' | 'negative' | 'neutral'
+  sentiment: Sentiment
   avatar?: string
 }
 
@@ -14,7 +16,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 1,
     recipientName: 'John Doe',
-    date: new Date().toISOString().split('T')[0], // Today
+    date: new Date().toISOString().split('T')[0] || '', // Today
     emotion: 'happy',
     feedback: 'John has been doing excellent work on the project. His attention to detail and problem-solving skills are outstanding. He consistently delivers high-quality code and is always willing to help team members. His positive attitude makes him a pleasure to work with.',
     sentiment: 'positive',
@@ -23,8 +25,8 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 2,
     recipientName: 'Jane Doe',
-    date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Yesterday
-    emotion: 'worried',
+    date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // Yesterday
+    emotion: 'sad',
     feedback: 'Jane seems to be struggling with the new framework implementation. She has been asking many questions and appears uncertain about the approach. While her effort is commendable, the project timeline might be affected if we don\'t provide additional support.',
     sentiment: 'negative',
     avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
@@ -32,7 +34,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 3,
     recipientName: 'John Smith',
-    date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 3 days ago
+    date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 3 days ago
     emotion: 'neutral',
     feedback: 'John\'s performance has been steady and consistent. He completes his tasks on time and follows the established processes well. There are no major concerns, but also no exceptional achievements to highlight.',
     sentiment: 'neutral',
@@ -41,7 +43,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 4,
     recipientName: 'Sarah Johnson',
-    date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days ago
+    date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 5 days ago
     emotion: 'excited',
     feedback: 'Sarah\'s innovative approach to solving complex problems has been impressive. She proposed a new architecture that could significantly improve our system performance. Her enthusiasm and technical expertise are valuable assets to the team.',
     sentiment: 'positive',
@@ -50,7 +52,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 5,
     recipientName: 'Mike Wilson',
-    date: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 1 week ago
+    date: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 1 week ago
     emotion: 'confused',
     feedback: 'Mike has been having difficulty understanding the new requirements. He seems to be missing some key concepts and has been making repeated mistakes. Additional training or mentoring might be necessary to get him back on track.',
     sentiment: 'negative',
@@ -59,7 +61,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 6,
     recipientName: 'Emily Chen',
-    date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 weeks ago
+    date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 2 weeks ago
     emotion: 'confident',
     feedback: 'Emily has shown remarkable leadership skills in the recent project. She confidently guided the team through complex challenges and made decisive decisions that led to successful outcomes. Her expertise and calm demeanor inspire confidence in the entire team.',
     sentiment: 'positive',
@@ -68,7 +70,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 7,
     recipientName: 'David Brown',
-    date: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 3+ weeks ago (current month)
+    date: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 3+ weeks ago (current month)
     emotion: 'calm',
     feedback: 'David maintains a steady and composed approach to his work. He handles pressure well and provides thoughtful solutions to problems. His calm presence helps maintain team stability during challenging periods.',
     sentiment: 'neutral',
@@ -77,7 +79,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 8,
     recipientName: 'Lisa Garcia',
-    date: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 6+ weeks ago (past month, current year)
+    date: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 6+ weeks ago (past month, current year)
     emotion: 'sad',
     feedback: 'Lisa has been going through a difficult time personally, which has affected her work performance. She\'s been missing deadlines and seems disengaged from team activities. We should offer support and check in on her wellbeing.',
     sentiment: 'negative',
@@ -95,7 +97,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 10,
     recipientName: 'Maria Rodriguez',
-    date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 2 days ago
+    date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 2 days ago
     emotion: 'excited',
     feedback: 'Maria has been showing great enthusiasm for the new project. Her creative ideas and proactive approach have been instrumental in moving the project forward. She consistently goes above and beyond expectations.',
     sentiment: 'positive',
@@ -104,7 +106,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 11,
     recipientName: 'Tom Wilson',
-    date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 6 days ago
+    date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 6 days ago
     emotion: 'confused',
     feedback: 'Tom has been struggling with the new system implementation. He needs additional training and support to get up to speed with the latest technologies and processes.',
     sentiment: 'negative',
@@ -113,7 +115,7 @@ const feedbackList = ref<Feedback[]>([
   {
     id: 12,
     recipientName: 'Anna Lee',
-    date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 10 days ago (1+ weeks)
+    date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0] || '', // 10 days ago (1+ weeks)
     emotion: 'calm',
     feedback: 'Anna has been maintaining a steady pace with her work. She handles tasks efficiently and maintains good communication with the team. Her consistent performance is appreciated.',
     sentiment: 'neutral',
@@ -121,9 +123,10 @@ const feedbackList = ref<Feedback[]>([
   }
 ])
 
-// Show all feedback without filtering
-const filteredFeedback = computed(() => {
-  return feedbackList.value
+// Get unique recipients from feedback list
+const uniqueRecipients = computed(() => {
+  const recipients = new Set(feedbackList.value.map(f => f.recipientName))
+  return Array.from(recipients).sort()
 })
 </script>
 
@@ -133,7 +136,23 @@ const filteredFeedback = computed(() => {
       <h1 class="text-2xl font-bold">Feedback</h1>
     </div>
 
-    <div v-if="filteredFeedback.length === 0" class="text-center py-12">
+    <!-- Filters and Sorting Section -->
+    <UCard>
+      <div class="space-y-4">
+        <div class="flex flex-wrap gap-4 items-end">
+          <FeedbackFilters
+            :recipients="uniqueRecipients"
+          />
+        </div>
+      </div>
+    </UCard>
+
+    <!-- Results Count -->
+    <div class="text-sm text-gray-600 dark:text-gray-400">
+      Showing {{ feedbackList.length }} of {{ feedbackList.length }} feedback{{ feedbackList.length !== 1 ? 's' : '' }}
+    </div>
+
+    <div v-if="feedbackList.length === 0" class="text-center py-12">
       <UIcon name="i-heroicons-chat-bubble-left-right" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
       <h3 class="text-lg font-medium text-gray-600 mb-2">No feedback found</h3>
       <p class="text-gray-500">Try adjusting your filters to see more results.</p>
@@ -141,7 +160,7 @@ const filteredFeedback = computed(() => {
 
     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <FeedbackCard 
-        v-for="feedback in filteredFeedback" 
+        v-for="feedback in feedbackList" 
         :key="feedback.id"
         :feedback="feedback"
       />
